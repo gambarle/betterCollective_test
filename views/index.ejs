@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><% include partials/template/head.ejs %></head>
+<body class="">
+	<% include partials/template/header.ejs %>
+	<div class="container">		
+		<% if (typeof(fixtures) !== 'undefined') { %>
+			<div class="matches">
+				<h4 class="date"><%= date %></h4>									
+				<% for (var i = 0; i < fixtures.length; i++) { %>
+					<% var dates = []; %>
+					<% // var date = fixtures[i].start %>
+					<% dates.push(date); %>
+					<div class="match">
+						<span class="home">
+							<img src="<%= fixtures[i].home_team_logo %>">
+							<%= fixtures[i].home_team %>
+						</span>
+						<span class="vs"> - </span>
+						<span class="away">
+							<img src="<%= fixtures[i].away_team_logo %>">
+							<%= fixtures[i].away_team %>
+						</span>
+					</div>
+					<div class="matchOdds">
+						<% if (typeof(odds) !== 'undefined') { %>
+							<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+							  <div class="panel panel-default">
+							    <div class="panel-heading" role="tab" id="headingOne">
+							      <h4 class="panel-title">
+							        <a data-toggle="collapse" data-parent="#accordion" href="#<%= fixtures[i].id %>" aria-expanded="true" aria-controls="collapseOne">
+							          <h4 class="oddsTitle">Best Odds</h4>
+							        </a>
+							      </h4>
+							    </div>
+							    <div id="<%= fixtures[i].id %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+							      <div class="panel-body">
+							        <% for (var j = 0; j < odds.length; j++) { %>
+										<% if (odds[j].c === fixtures[i].event_slug) { %>
+											<% var matchOdds = odds[j]; %>									
+											<div class="3w">
+												<% if (typeof(matchOdds.o['3w']) !== 'undefined') { %>
+													<% var threeW = matchOdds.o['3w']; %>
+													<div class="oddsView col-xs-12 col-sm-4">
+														<a href="<%= threeW.best.h.u %>"><h4><%= threeW.best.h.b.toUpperCase(); %></h4></a>
+														<h5><%= threeW.best.h.o %></h5>
+														<p>1: Home</p>
+													</div>
+													<div class="oddsView col-xs-12 col-sm-4">
+														<a href="<%= threeW.best.d.u %>"><h4><%= threeW.best.d.b.toUpperCase(); %></h4></a>
+														<h5><%= threeW.best.d.o %></h5>
+														<p>1: Draw</p>
+													</div>
+													<div class="oddsView col-xs-12 col-sm-4">
+														<a href="<%= threeW.best.a.u %>"><h4><%= threeW.best.a.b.toUpperCase(); %></h4></a>
+														<h5><%= threeW.best.a.o %></h5>
+														<p>1: Away</p>
+													</div>
+												<% } %>
+											</div>																			
+										<% } %>
+									<% } %>
+							      </div>
+							    </div>
+							  </div>
+							</div>							 							
+						<% } %>														
+					</div>						
+				<% } %>			
+			</div>			
+		<% } %>
+	
+	</div> <!-- /container -->
+
+	<% include partials/template/footer.ejs %>
+	<% include partials/template/jsdefault.ejs %>
+
+</body>
+</html>

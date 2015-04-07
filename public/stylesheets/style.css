@@ -1,0 +1,64 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.container-fluid {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+.container-fluid img {
+	position: relative;
+	left: 50%;
+	margin-left: -751px;
+}
+
+.container-fluid .title {
+	position: absolute;	
+	top: -10px;
+	left: 50%;
+	margin-left: -305px;
+	color: #fff;
+	font-family: Helvetica;
+	text-transform: uppercase;
+}
+
+a {
+  color: #000;
+}
+
+a:hover {
+	color: #00B7FF;
+	text-decoration: none;
+}
+
+.matches {
+	position: relative;
+	width: 800px;
+	left: 50%;
+	margin-left: -400px;
+	text-align: center;
+	background-color: #fff;
+}
+
+.date {
+	padding: 10px 0 10px 0;
+	text-align: center;
+	background-color: #00B7FF;
+}
+
+.match {
+	padding: 35px 0 35px 0;
+}
+
+.home,.vs,.away {
+	margin-right: 30px;
+}
+
+@media screen and (max-width: 650px) {
+	.container-fluid .title {
+		font-size: 24px;
+		margin-left: -193px;
+	}
+}
